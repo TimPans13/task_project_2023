@@ -108,7 +108,7 @@ namespace App.Scripts.Scenes.SceneChess.Features.GridNavigation.Navigator
                 return false;
             }
 
-            return grid.Get(position.x, position.y) == null;
+            return grid.Get(position.y, position.x) == null;
         }
 
         private List<Vector2Int> GetNeighbors(Vector2Int position)
