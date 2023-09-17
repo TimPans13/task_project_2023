@@ -24,6 +24,12 @@ namespace App.Scripts.Infrastructure.LevelSelection
             }
         }
 
+        public void MoveToNextLevel(int levelIndex)
+        {
+            if (levelIndex > _configLevelSelection.TotalLevelCount) throw new ArgumentOutOfRangeException("Invalid level index.");
+            UpdateSelectedLevel(levelIndex);
+        }
+
         public event Action OnSelectedLevelChanged;
 
         public void UpdateSelectedLevel(int levelIndex)

@@ -22,6 +22,8 @@ namespace App.Scripts.Scenes.SceneFillwords.States.Setup
             _serviceLevelSelection = serviceLevelSelection;
             _viewGridLetters = viewGridLetters;
             _containerGrid = containerGrid;
+
+            providerFillwordLevel.OnLoadModelRequested += LoadNextLevel;
         }
 
         public Task Process()
@@ -31,6 +33,11 @@ namespace App.Scripts.Scenes.SceneFillwords.States.Setup
             _viewGridLetters.UpdateItems(model);
             _containerGrid.SetupGrid(model, _serviceLevelSelection.CurrentLevelIndex);
             return Task.CompletedTask;
+        }
+
+        private void LoadNextLevel(int nextLevelIndex)
+        {
+            _serviceLevelSelection.MoveToNextLevel(nextLevelIndex);
         }
     }
 }
